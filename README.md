@@ -1,19 +1,20 @@
 ## Usersテーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name_kanji   | string | null: false |
-| family_name_kanji  | string | null: false |
-| first_name_kana    | string | null: false |
-| family_name_kana   | string | null: false |
-| birthday           | string | null: false |
+| Column             | Type   | Options      |
+| ------------------ | ------ | ------------ |
+| nickname           | string | null: false  |
+| email              | string | unique: true |
+| encrypted_password | string | null: false  |
+| first_name_kanji   | string | null: false  | 
+| family_name_kanji  | string | null: false  |
+| first_name_kana    | string | null: false  | 
+| family_name_kana   | string | null: false  |
+| birthday           | date   | null: false  | 
 
 
 ### Association
-（ここに追記していく）
+- has_many :Items
+- has_many :Buy_items
 
 ## Itemsテーブル
 
@@ -21,17 +22,19 @@
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | product            | string     | null: false                    |
-| category           | string     | null: false                    |
-| price              | string     | null: false                    |
+| category_id        | integer    | null: false                    |
+| price              | integer    | null: false                    |
 | delivery_fee       | string     | null: false                    | 
-| content            | string     | null: false                    | 
-| status             | string     | null: false                    |   
-| shippping_area     | string     | null: false                    | 
-| shipping_days      | string     | null: false                    |
-| image              | string     | null: false                    |
+| content            | text       | null: false                    | 
+| status_id          | string     | null: false                    |   
+| sprefecture_id     | integer    | null: false                    | 
+| shipping_days_id   | integer    | null: false                    |
+
 
 
 ### Association
+- belongs_to :Users
+- has_one :Buy_items
 
 ## Buy_itemsテーブル
 
@@ -39,22 +42,23 @@
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | product            | references | null: false, foreign_key: true |
-| category           | references | null: false, foreign_key: true |
-| price              | references | null: false, foreign_key: true |
-| delivery_fee       | references | null: false, foreign_key: true |
 
 
 ### Association
+- belongs_to :Users
+- belongs_to :Items
+- has_one :Buy_info
 
 ## Buy_infoテーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| postal_code        | string | null: false |
-| prefecture         | string | null: false |
-| municipality       | string | null: false |
-| address            | string | null: false |
-| building           | string |             |
-| tel                | string | null: false |
+| Column             | Type    | Options        |
+| ------------------ | ------- | -------------- |
+| postal_code        | string  | null: false    |
+| prefecture_id      | integer | null: false    |
+| municipality       | string  | null: false    |
+| address            | string  | null: false    |
+| building           | string  | optional: true |
+| tel                | string  | null: false    |
 
 ### Association
+- belongs_to :Buy_items
