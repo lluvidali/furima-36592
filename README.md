@@ -58,7 +58,7 @@
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | tel                | string     | null: false                    |
-| buy_items          | references | null: false, foreign_key: true |
+| buy_item           | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :buy_item
