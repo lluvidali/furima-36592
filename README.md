@@ -1,20 +1,20 @@
 ## Usersテーブル
 
-| Column             | Type   | Options      |
-| ------------------ | ------ | ------------ |
-| nickname           | string | null: false  |
-| email              | string | unique: true |
-| encrypted_password | string | null: false  |
-| first_name_kanji   | string | null: false  | 
-| family_name_kanji  | string | null: false  |
-| first_name_kana    | string | null: false  | 
-| family_name_kana   | string | null: false  |
-| birthday           | date   | null: false  | 
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name_kanji   | string | null: false               | 
+| family_name_kanji  | string | null: false               |
+| first_name_kana    | string | null: false               | 
+| family_name_kana   | string | null: false               |
+| birthday           | date   | null: false               | 
 
 
 ### Association
-- has_many :Items
-- has_many :Buy_items
+- has_many :item
+- has_many :buy_item
 
 ## Itemsテーブル
 
@@ -24,7 +24,7 @@
 | product            | string     | null: false                    |
 | category_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| delivery_fee       | string     | null: false                    | 
+| delivery_fee_i     | integer    | null: false                    | 
 | content            | text       | null: false                    | 
 | status_id          | string     | null: false                    |   
 | sprefecture_id     | integer    | null: false                    | 
@@ -33,8 +33,8 @@
 
 
 ### Association
-- belongs_to :Users
-- has_one :Buy_items
+- belongs_to :user
+- has_one :buy_item
 
 ## Buy_itemsテーブル
 
@@ -45,20 +45,19 @@
 
 
 ### Association
-- belongs_to :Users
-- belongs_to :Items
-- has_one :Buy_info
+- belongs_to :user
+- belongs_to :item
+- has_one :buy_info
 
 ## Buy_infoテーブル
 
-| Column             | Type    | Options        |
-| ------------------ | ------- | -------------- |
-| postal_code        | string  | null: false    |
-| prefecture_id      | integer | null: false    |
-| municipality       | string  | null: false    |
-| address            | string  | null: false    |
-| building           | string  | optional: true |
-| tel                | string  | null: false    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| postal_code        | string     | null: false                    |
+| prefecture_id      | references | null: false, foreign_key: true |
+| address            | string     | null: false                    |
+| building           | string     |                                |
+| tel                | string     | null: false                    |
 
 ### Association
-- belongs_to :Buy_items
+- belongs_to :buy_item
