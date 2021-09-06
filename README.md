@@ -13,8 +13,8 @@
 
 
 ### Association
-- has_many :item
-- has_many :buy_item
+- has_many :items
+- has_many :buy_items
 
 ## Itemsテーブル
 
@@ -24,9 +24,9 @@
 | product            | string     | null: false                    |
 | category_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| delivery_fee_i     | integer    | null: false                    | 
+| delivery_fee_id    | integer    | null: false                    | 
 | content            | text       | null: false                    | 
-| status_id          | string     | null: false                    |   
+| status_id          | integer    | null: false                    |   
 | sprefecture_id     | integer    | null: false                    | 
 | shipping_days_id   | integer    | null: false                    |
 
@@ -54,10 +54,11 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | postal_code        | string     | null: false                    |
-| prefecture_id      | references | null: false, foreign_key: true |
+| prefecture_id      | integer    | null: false                    |
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | tel                | string     | null: false                    |
+| buy_items          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :buy_item
