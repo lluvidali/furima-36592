@@ -11,13 +11,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-  end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
                                       keys: [:nickname, :first_name_kanji, :family_name_kanji, :first_name_kana,
