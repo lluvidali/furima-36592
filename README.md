@@ -27,7 +27,7 @@
 | delivery_fee_id    | integer    | null: false                    | 
 | content            | text       | null: false                    | 
 | status_id          | integer    | null: false                    |   
-| sprefecture_id     | integer    | null: false                    | 
+| prefecture_id      | integer    | null: false                    | 
 | shipping_days_id   | integer    | null: false                    |
 
 
