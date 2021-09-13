@@ -6,9 +6,9 @@ class Item < ApplicationRecord
   validates :content,          presence: true
   validates :status_id,        presence: true
   validates :prefecture_id,    presence: true
-  validates :shipping_days_id, presence: true
+  validates :shipping_day_id,  presence: true
 
-  validates :category_id, :delivery_fee_id, :status_id, :prefecture_id, :shipping_days_id, numericality: { other_than: 1 , message: "can't be blank" }
+  validates :category_id, :delivery_fee_id, :status_id, :prefecture_id, :shipping_day_id, numericality: { other_than: 1 , message: "can't be blank" }
 
   belongs_to :user
   has_one_attached :image
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :delivery_fee
   belongs_to :prefecture
-  belongs_to :shipping_days
+  belongs_to :shipping_day
 
 
 end
