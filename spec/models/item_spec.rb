@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    #bundle exec rspec spec/models/user_spec.rb@item.image = fixture_file_upload("public/images/test_image.png")
+    # bundle exec rspec spec/models/user_spec.rb@item.image = fixture_file_upload("public/images/test_image.png")
   end
 
   describe '商品出品機能' do
@@ -11,7 +11,6 @@ RSpec.describe Item, type: :model do
       it 'user_id,product,category_id,price,delivery_fee_id,content,status_id, prefecture_id, shipping_idとimageが存在していれば保存できる' do
         expect(@item).to be_valid
       end
-
     end
     context '商品出品情報が保存できない場合' do
       it 'userが紐付いていないと保存できない' do
@@ -71,13 +70,13 @@ RSpec.describe Item, type: :model do
       it '¥300未満の数字だと保存できない' do
         @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
-      it '¥10,000,000以上の数字だと保存できない'do
-      @item.price = '10000000'
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      it '¥10,000,000以上の数字だと保存できない' do
+        @item.price = '10000000'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
     end
   end

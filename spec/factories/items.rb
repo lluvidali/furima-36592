@@ -1,13 +1,12 @@
 FactoryBot.define do
   factory :item do
-    
     association :user
 
-    product { "aaaaaa" }
+    product { 'aaaaaa' }
     category { Category.all.sample }
-    price {Faker::Number.within(range: 300..9999999)}
+    price { Faker::Number.within(range: 300..9_999_999) }
     delivery_fee { DeliveryFee.all.sample }
-    content { "ssssss" }
+    content { 'ssssss' }
     status { Status.all.sample }
     prefecture { Prefecture.all.sample }
     shipping_day { ShippingDay.all.sample }
