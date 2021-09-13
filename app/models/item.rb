@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
   validates :product,          presence: true
   validates :category_id,      presence: true
-  validates :price,            presence: true
+  validates :price,            presence: true, numericality: true, length: { minimum: 300, maximaum:9999999 }
   validates :delivery_fee_id,  presence: true
   validates :content,          presence: true
   validates :status_id,        presence: true
   validates :prefecture_id,    presence: true
   validates :shipping_day_id,  presence: true
+  validates :image,            presence: true
 
   validates :category_id, :delivery_fee_id, :status_id, :prefecture_id, :shipping_day_id, numericality: { other_than: 1 , message: "can't be blank" }
 
