@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   validates :product,          presence: true
   validates :category_id,      presence: true
-  validates :price,            presence: true, numericality: true, length: { minimum: 300, maximaum:9999999 }
+  validates :price,            presence: true, :numericality => { :greater_than_or_equal_to => 300, :less_than_or_equal_to => 9999999 }
   validates :delivery_fee_id,  presence: true
   validates :content,          presence: true
   validates :status_id,        presence: true
