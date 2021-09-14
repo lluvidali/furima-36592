@@ -67,7 +67,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '¥300未満の数字だと保存できない' do
-        @item.price = 1 * 100
+        @item.price = 1 * 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
@@ -79,31 +79,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @item.category_id = 'id: 1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it '商品の状態に「---」が選択されている場合は出品できない' do
-        @item.status_id = 'id: 1'
+        @item.status_id =  1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
 
       it '配送料の負担に「---」が選択されている場合は出品できない' do
-        @item.delivery_fee_id = ' id: 1'
+        @item.delivery_fee_id =  1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
 
       it '発送元の地域に「---」が選択されている場合は出品できない' do
-        @item.prefecture_id = 'id: 1 '
+        @item.prefecture_id =  1 
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it '発送までの日数に「---」が選択されている場合は出品できない' do
-        @item.shipping_day_id = 'id: 1'
+        @item.shipping_day_id =  1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
