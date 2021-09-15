@@ -2,6 +2,7 @@ class BuyInfo < ApplicationRecord
 
   validates :postal_code, presence: true
   validates :address,     presence: true
+  validates :city,     presence: true
   validates :tel,         presence: true
 
   validates :prefecture_id { other_than: 1, message: "can't be blank" }

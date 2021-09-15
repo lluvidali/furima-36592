@@ -3,6 +3,7 @@ class CreateBuyInfos < ActiveRecord::Migration[6.0]
     create_table :buy_infos do |t|
       t.string     :postal_code,   null: false
       t.integer    :prefecture_id, null: false
+      t.string     :city,          null: false
       t.string     :address,       null: false
       t.string     :building,      null: false
       t.string     :tel,           null: false
