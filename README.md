@@ -41,15 +41,15 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
-| product            | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :buy_info
+- has_one :buy_infos
 
-## Buy_infoテーブル
+## Buy_infosテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -58,7 +58,7 @@
 | address            | string     | null: false                    |
 | building           | string     |                                |
 | tel                | string     | null: false                    |
-| buy_item           | references | null: false, foreign_key: true |
+| order              | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :buy_item
+- belongs_to :order
