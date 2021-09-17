@@ -8,7 +8,7 @@ class OrderInfo
   validates :address,     presence: true
   validates :city,        presence: true
   validates :tel,         presence: true, format: {with: /\A\d{10,11}\z/, message: "is invalid. Don't Include hyphen(-)"}
-  #validates :token, presence: true
+  validates :token,       presence: true
  
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
  
