@@ -5,9 +5,9 @@ class CreateBuyInfos < ActiveRecord::Migration[6.0]
       t.integer    :prefecture_id, null: false
       t.string     :city,          null: false
       t.string     :address,       null: false
-      t.string     :building,      null: false
+      t.string     :building 
       t.string     :tel,           null: false
-      t.references :orders,        null: false, foreign_key: true
+      t.references :order,        null: false, foreign_key: true
 
       t.timestamps
     end

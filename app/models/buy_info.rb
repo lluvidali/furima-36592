@@ -1,16 +1,7 @@
 class BuyInfo < ApplicationRecord
 
-  validates :postal_code, presence: true
-  validates :address,     presence: true
-  validates :city,     presence: true
-  validates :tel,         presence: true
+  belongs_to :order, optional: true
 
-  validates :prefecture_id { other_than: 1, message: "can't be blank" }
-
-  belongs_to :order
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions 
   belongs_to :prefecture
 end
-
-

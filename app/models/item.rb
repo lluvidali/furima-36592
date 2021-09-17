@@ -12,6 +12,7 @@ class Item < ApplicationRecord
 
   validates :category_id, :delivery_fee_id, :status_id, :prefecture_id, :shipping_day_id,
             numericality: { other_than: 1, message: "can't be blank" }
+  
 
   belongs_to :user
   has_one :order
