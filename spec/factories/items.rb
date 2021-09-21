@@ -3,13 +3,13 @@ FactoryBot.define do
     association :user
 
     product { 'aaaaaa' }
-    category { Category.all.sample }
+    category_id { Faker::Number.between(from: 2, to: 11) }
     price { Faker::Number.within(range: 300..9_999_999) }
-    delivery_fee { DeliveryFee.all.sample }
+    delivery_fee_id { Faker::Number.between(from: 2, to: 3) }
     content { 'ssssss' }
-    status { Status.all.sample }
-    prefecture { Prefecture.all.sample }
-    shipping_day { ShippingDay.all.sample }
+    status_id { Faker::Number.between(from: 2, to: 7) }
+    prefecture_id { Faker::Number.between(from: 2, to: 48) }
+    shipping_day_id { Faker::Number.between(from: 2, to: 4) }
 
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
