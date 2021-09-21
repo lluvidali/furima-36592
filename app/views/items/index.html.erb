@@ -133,10 +133,11 @@
         <div class='item-img-content'>
           <%= image_tag item.image.variant(resize: '500x500'), class: 'item-img' if item.image.attached? %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-         <%# <div class='sold-out'>
+          <% if item.order.present? %>
+          <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+          <% end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
@@ -158,7 +159,7 @@
 
       <% if @items.length == 0 %>
       <li class='list'>
-        <%= link_to item_path do %>
+        <%= link_to item_path(@items) do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -183,4 +184,4 @@
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
-<%#= render "divise/shared/footer" %>
+<%= render "devise/shared/footer" %>
