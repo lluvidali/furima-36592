@@ -5,6 +5,7 @@ RSpec.describe OrderInfo, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @order_info = FactoryBot.build(:order_info, user_id: user.id, item_id: item.id)
+    sleep 0.1
   end
 
   context '内容に問題ない場合' do
@@ -65,6 +66,30 @@ RSpec.describe OrderInfo, type: :model do
       @order_info.tel = '１２３４５６７'
       @order_info.valid?
       expect(@order_info.errors.full_messages).to include("Tel is invalid. Don't Include hyphen(-)")
+    end
+
+    it '電話番号が9桁以下では購入できないこと' do
+      @order_info.tel = '12345678'
+      @order_info.valid?
+      expect(@order_info.errors.full_messages).to include("Tel is invalid. Don't Include hyphen(-)")
+    end
+
+    it '電話番号が12桁以上では購入できないこと' do
+      @order_info.tel = '123456789101'
+      @order_info.valid?
+      expect(@order_info.errors.full_messages).to include("Tel is invalid. Don't Include hyphen(-)")
+    end
+
+    it 'userが紐付いていなければ購入できないこと' do
+      @order_info.user_id = nil
+      @order_info.valid?
+      expect(@order_info.errors.full_messages).to include("User can't be blank")
+    end
+
+    it 'itemが紐付いていなければ購入できないこと' do
+      @order_info.item_id = nil
+      @order_info.valid?
+      expect(@order_info.errors.full_messages).to include("Item can't be blank")
     end
   end
 end
